@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: stock-portfolio-advisor
+  docker:
+    compose:
+      enabled: false
+
+langchain4j:
+  ollama:
+    chat-model:
+      base-url: http://localhost:11434
+      model-name: llama3.2
+      log-requests: true
+      log-responses: true
+      temperature: 0.8
+      timeout: PT60S
+#      supported-capabilities: response_format_json_schema
+logging:
+  level:
+    dev:
+      langchain4j: DEBUG
+      ai4j:
+        ollama4j: DEBUG

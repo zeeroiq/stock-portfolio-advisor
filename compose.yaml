@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=stock_advisor_db'
+      - 'POSTGRES_PASSWORD=user'
+      - 'POSTGRES_USER=password'
+    ports:
+      - '5432:5432'
+#    restart: unless-stopped
+    restart: no
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '8081:81'
+    depends_on:
+      - postgres
+    restart: unless-stopped
