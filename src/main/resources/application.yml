@@ -19,8 +19,15 @@ langchain4j:
       log-requests: true
       log-responses: true
       temperature: 0.8
-      timeout: PT60S
+      timeout: PT120S
       # supported-capabilities: response_format_json_schema
+
+
+fmg:
+  api:
+    v3:
+#      endpoint: https://financialmodelingprep.com/stable
+      endpoint: https://financialmodelingprep.com/api/v3
 
 # logging configuration
 logging:
