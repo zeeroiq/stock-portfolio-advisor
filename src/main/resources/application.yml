@@ -5,6 +5,12 @@ spring:
     compose:
       enabled: false
 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/stock_advisor_db
+    username: user
+    password: password
+
+# langchain4j configuration
 langchain4j:
   ollama:
     chat-model:
@@ -14,7 +20,9 @@ langchain4j:
       log-responses: true
       temperature: 0.8
       timeout: PT60S
-#      supported-capabilities: response_format_json_schema
+      # supported-capabilities: response_format_json_schema
+
+# logging configuration
 logging:
   level:
     dev:
