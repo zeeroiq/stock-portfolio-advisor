@@ -5,6 +5,7 @@ import com.shri.spring.stock.advisor.dto.StocksHoldingDetailDto;
 import com.shri.spring.stock.advisor.model.StockOrder;
 import com.shri.spring.stock.advisor.model.enums.OrderType;
 import com.shri.spring.stock.advisor.repository.OrderRepository;
+import dev.langchain4j.agent.tool.Tool;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
 
+    @Tool
     public StockOrder createOrder(StockOrderDto stockOrder){
         var so = StockOrder.builder()
                 .userId("test_user")
@@ -30,6 +32,7 @@ public class OrderService {
         return orderRepository.save(so);
     }
 
+    @Tool
     public StockOrderDto findById(Long id){
         Optional<StockOrder> stock = orderRepository.findById(id);
         if(stock.isPresent()){
@@ -45,6 +48,7 @@ public class OrderService {
         return null;
     }
 
+    @Tool
     public List<StockOrderDto> findAll(){
         List<StockOrder> availableOrders = orderRepository.findAll();
         return availableOrders.stream()
@@ -58,6 +62,7 @@ public class OrderService {
     }
 
 
+    @Tool
     public List<StockOrderDto> getOrdersBySymbol(String symbol){
         List<StockOrder> availableOrders = orderRepository.findBySymbol(symbol);
         return availableOrders.stream()
@@ -70,6 +75,7 @@ public class OrderService {
                 .toList();
     }
 
+    @Tool
     public List<StocksHoldingDetailDto> getStocksHoldingDetails() {
         return orderRepository.findAll().stream()
                 .collect(Collectors.groupingBy(StockOrder::symbol, Collectors.summingInt(o -> Objects.equals(o.orderType(), OrderType.BUY) ? o.quantity() : -o.quantity())))

@@ -7,10 +7,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Builder
-@Table
+@Table(schema = "portfolio", name = "stock_orders")
 public record StockOrder(
         @Id Long id,
         String userId,
@@ -18,5 +18,5 @@ public record StockOrder(
         Integer quantity,
         BigDecimal price,
         OrderType orderType,
-        @CreatedDate Timestamp createdAt
+        @CreatedDate LocalDateTime createdAt
 ){}

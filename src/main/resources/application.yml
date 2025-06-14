@@ -9,6 +9,15 @@ spring:
     url: jdbc:postgresql://localhost:5432/stock_advisor_db
     username: user
     password: password
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+#      data-locations: classpath:data.sql
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
 
 # langchain4j configuration
 langchain4j:
