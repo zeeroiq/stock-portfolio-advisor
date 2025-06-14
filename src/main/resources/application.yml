@@ -1,4 +1,10 @@
 spring:
+#  jackson:
+#    mapper:
+#      accept-case-insensitive-enums: true
+  threads:
+    virtual:
+      enabled: true
   application:
     name: stock-portfolio-advisor
   docker:
@@ -40,6 +46,8 @@ fmg:
 
 # logging configuration
 logging:
+#  pattern:
+#    console: %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
   level:
     dev:
       langchain4j: DEBUG
